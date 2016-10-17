@@ -1,1 +1,5 @@
 Repository for Pristionchus RNA-seq analysis
+
+Samples: eud1 knockout (S4) and eud1 overexpression (S6R1), 4 replicates/each
+Ilumina sequencing, 75bp single end reads
+Reference genome: Hybrid2 Assembly
