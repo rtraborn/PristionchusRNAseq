@@ -13,22 +13,24 @@
 ulimit -s unlimited
 module load gcc
 module load bedtools
-module load findmotifs
 
 GENOME=/N/dc2/projects/Pristionchus/LBUI/RNA_seq_2016/Database/pacificus_Hybrid2.fa
 ChrLength=/N/dc2/projects/Pristionchus/LBUI/PristionchusRNAseq/annotation_files/pp_hybrid2_chrlengths.txt
 WD=/N/dc2/projects/Pristionchus/LBUI/PristionchusRNAseq/annotation_files
+BG={to be entered by LBR}
+myLen=1000
+
 
 cd $WD
 
 echo "Creating fasta files for promoter regions"
 
-for GL in *.bed
+for BD in *.bed
 do
 
-bedtools flank -i $(basename $GL .bed).bed $GL -g $ChrLength -l 1000 -r 0 -s 
-bedtools getfasta -fi $GENOME -bed $(basename $GL .bed).bed $GL |
-findmotifs.pl    
+bedtools flank -i $BD -g $ChrLength -l $myLen -r 0 -s |
+bedtools getfasta -s -fi $GENOME > $(basename $BD .bed).fa 
+findmotifs.pl  $BD.fa fasta $(basename $BD .bed) -fasta $BG -len 8,10,12 -norevopp    
 
 done
 
