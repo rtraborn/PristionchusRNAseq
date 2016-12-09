@@ -1,0 +1,1 @@
+cmd = S6.5X.fa fasta S6.5X_1kb -fasta /N/dc2/projects/Pristionchus/LBUI/PristionchusRNAseq/annotation_files/pacificus_Hybrid2.fa -len 8,10,12 -norevopp -p 16
